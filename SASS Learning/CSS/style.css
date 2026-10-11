@@ -1,0 +1,83 @@
+/* 1. Variables
+   2. Nesting
+   3. Operators
+   4. Maps
+   5. Ampersand --> &
+   6. Mixin
+   7. Extend -- it inherit values
+   8. Partials -- _ files which is not compiled but live sass compiler, then
+                  only use to import and there is no css and map file crated. 
+ */
+.button, header button {
+  color: white;
+  background-color: darkcyan;
+  border: 2px solid #045151;
+  padding: 10px 20px;
+}
+
+header {
+  background-color: blueviolet;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header h2 {
+  font-size: popins;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 40px;
+}
+
+header nav a:hover {
+  background-color: burlywood;
+}
+
+header button:hover {
+  background-color: #33c5c5;
+}
+
+h1 {
+  font-size: 70px;
+  color: rebeccapurple;
+}
+
+h1::before {
+  content: "I am";
+  color: black;
+}
+
+@media screen and (max-width: 900px) {
+  h1 {
+    font-size: 16px;
+  }
+  header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+/*# sourceMappingURL=style.css.map */

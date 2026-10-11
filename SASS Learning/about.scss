@@ -1,0 +1,9 @@
+@import "common";
+
+body {
+  background-color: aquamarine;
+}
+
+button {
+  @extend .button;
+}

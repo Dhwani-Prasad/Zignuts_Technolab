@@ -1,0 +1,26 @@
+.button {
+  color: white;
+  background-color: darkcyan;
+  border: 2px solid rgb(4, 81, 81);
+  padding: 10px 20px;
+}
+
+$var-bg: blueviolet; // variables
+$var-text: white;
+
+//map declare
+$font-size: (
+  "mobile": 16px,
+  "tablet": 25px,
+  "desktop": 70px
+);
+
+// mixin with parameter and can use without parameter also, 
+// remember postion matters,
+// and also can set default values ($ai)
+@mixin flexbox($fd, $jc, $ai: center) {
+  display: flex;
+  flex-direction: $fd;
+  justify-content: $jc;
+  align-items: $ai;
+}

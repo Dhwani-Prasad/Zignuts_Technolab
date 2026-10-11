@@ -1,0 +1,11 @@
+.button, button {
+  color: white;
+  background-color: darkcyan;
+  border: 2px solid #045151;
+  padding: 10px 20px;
+}
+
+body {
+  background-color: aquamarine;
+}
+/*# sourceMappingURL=about.css.map */

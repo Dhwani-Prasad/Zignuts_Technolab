@@ -1,0 +1,62 @@
+/* 1. Variables
+   2. Nesting
+   3. Operators
+   4. Maps
+   5. Ampersand --> &
+   6. Mixin
+   7. Extend -- it inherit values
+   8. Partials -- _ files which is not compiled but live sass compiler, then
+                  only use to import and there is no css and map file crated. 
+ */
+
+@import "common";
+
+header {
+  background-color: $var-bg;
+  @include flexbox(row, space-evenly);
+
+  h2 {
+    font-size: popins;
+  }
+
+  nav {
+    a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px*2; // operators
+
+      &:hover {
+        background-color: burlywood;
+      }
+    }
+  }
+
+  button {
+    @extend .button;
+
+    &:hover {
+      background-color: rgb(51, 197, 197);
+    }
+  }
+}
+
+h1 {
+  font-size: map-get($map: $font-size, $key: "desktop"); // map use
+  color: rebeccapurple;
+
+  &::before {
+    content: "I am";
+    color: black;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  h1 {
+    font-size: map-get($map: $font-size, $key: "mobile"); // map use
+  }
+
+  header {
+    @include flexbox(column, space-evenly);
+  }
+
+}
