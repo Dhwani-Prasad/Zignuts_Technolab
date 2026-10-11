@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Practice Task</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>CSS Practice Task</h1>
+    <p>Font • Position • Combinators • Selectors • Flex • Grid • Animation</p>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h2>1. Font Size</h2>
+      <p class="px-text">This text uses 20px.</p>
+      <p class="em-text">This text uses 1.5em.</p>
+      <p class="rem-text">This text uses 1.5rem.</p>
+    </section>
+
+    <section class="card position-section">
+      <h2>2. Position & Offset</h2>
+      <div class="position-box">
+        <span>Relative</span>
+        <div class="absolute-box">Absolute</div>
+      </div>
+      <button class="fixed-button">Top</button>
+    </section>
+
+    <section class="card">
+      <h2>3. Clearfix ::after</h2>
+      <div class="clearfix">
+        <div class="float-box">Floated Box</div>
+        <p>
+          This container uses <strong>::after</strong> to clear the floated
+          element.
+        </p>
+      </div>
+    </section>
+
+    <section class="card combinator-demo">
+      <h2>4. CSS Combinators</h2>
+      <div class="parent">
+        <p>Descendant selector</p>
+        <div>
+          <p>Another paragraph</p>
+        </div>
+      </div>
+      <p>Adjacent sibling</p>
+      <p>General sibling</p>
+    </section>
+
+    <section class="card">
+      <h2>5. Pseudo-class</h2>
+      <a href="#">Hover over me</a>
+      <input type="text" placeholder="Focus here">
+      <button class="hover-button">Hover Me</button>
+    </section>
+
+    <section class="card pseudo-element-demo">
+      <h2>6. Pseudo-elements</h2>
+      <p>This paragraph uses ::before and ::after.</p>
+    </section>
+
+    <section class="card">
+      <h2>7. Attribute Selector</h2>
+      <input type="text" placeholder="Text input">
+      <input type="email" placeholder="Email input">
+      <input type="password" placeholder="Password input">
+    </section>
+
+    <section class="card">
+      <h2>8. Flexbox</h2>
+      <div class="flex-container">
+        <div>Flex 1</div>
+        <div>Flex 2</div>
+        <div>Flex 3</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>9. CSS Grid</h2>
+      <div class="grid-container">
+        <div>Grid 1</div>
+        <div>Grid 2</div>
+        <div>Grid 3</div>
+        <div>Grid 4</div>
+        <div>Grid 5</div>
+        <div>Grid 6</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>10. Transition & Transform</h2>
+      <div class="transform-box">Hover Me</div>
+    </section>
+
+    <section class="card">
+      <h2>11. Animation</h2>
+      <div class="animated-box">CSS Animation</div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Resize the browser to test responsiveness.</p>
+  </footer>
+
+</body>
+
+</html>

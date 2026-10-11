@@ -1,0 +1,271 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
+
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  background: #222;
+  color: white;
+}
+
+.header h1 {
+  font-size: 2rem;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* 1. Font size: px, em, rem */
+.px-text {
+  font-size: 20px;
+}
+
+.em-text {
+  font-size: 1.5em;
+}
+
+.rem-text {
+  font-size: 1.5rem;
+}
+
+/* 2. Position and offset */
+.position-box {
+  position: relative;
+  height: 180px;
+  background: #eee;
+  padding: 20px;
+}
+
+.position-box span {
+  position: relative;
+  left: 20px;
+  top: 10px;
+}
+
+.absolute-box {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 15px;
+  background: #222;
+  color: white;
+}
+
+.fixed-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+/* 3. Clearfix */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.float-box {
+  float: left;
+  width: 150px;
+  padding: 25px;
+  margin-right: 20px;
+  background: #ddd;
+}
+
+/* 4. Combinators */
+/* Descendant: any p inside .parent */
+.parent p {
+  padding: 8px;
+}
+
+/* Child: only direct p children */
+.parent > p {
+  border-left: 4px solid #222;
+}
+
+/* Adjacent sibling */
+.combinator-demo h2 + p {
+  font-weight: bold;
+}
+
+/* General sibling */
+.combinator-demo h2 ~ p {
+  color: #555;
+}
+
+/* 5. Pseudo-classes */
+.card a:hover {
+  color: red;
+}
+
+.card input:focus {
+  outline: 3px solid #aaa;
+}
+
+.hover-button:hover {
+  background: #222;
+  color: white;
+}
+
+/* 6. Pseudo-elements */
+.pseudo-element-demo p::before {
+  content: "★ ";
+}
+
+.pseudo-element-demo p::after {
+  content: " ✓";
+}
+
+/* 7. Attribute selectors */
+input[type="text"] {
+  border: 2px solid #555;
+}
+
+input[type="email"] {
+  border: 2px solid #777;
+}
+
+input[type="password"] {
+  border: 2px solid #999;
+}
+
+.card input {
+  padding: 10px;
+  margin: 5px;
+}
+
+/* 8. Flexbox */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.flex-container div {
+  flex: 1;
+  padding: 25px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* 9. Grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.grid-container div {
+  padding: 30px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* 10. Transition and transform */
+.transform-box {
+  width: 150px;
+  padding: 30px 10px;
+  text-align: center;
+  background: #ddd;
+  transition: transform 0.4s, background 0.4s;
+}
+
+.transform-box:hover {
+  transform: scale(1.2) rotate(5deg);
+  background: #bbb;
+}
+
+/* 11. Animation */
+.animated-box {
+  width: 160px;
+  padding: 20px;
+  text-align: center;
+  background: #222;
+  color: white;
+  animation: moveBox 3s infinite alternate;
+}
+
+@keyframes moveBox {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(300px);
+  }
+}
+
+/* 12. Responsive design */
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .flex-container div {
+    width: 100%;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .animated-box {
+    animation: none;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+}
