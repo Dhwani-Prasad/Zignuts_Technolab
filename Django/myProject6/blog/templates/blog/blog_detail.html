@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template 2</title>
+</head>
+
+<body>
+  <h1> Blog Filter Page </h1>
+  <!-- Text filter -->
+  <p> <b> Title (Normal) : </b> {{post.title}}</p>
+  <p> <b> Upper case : </b> {{post.title | upper}}</p>
+  <p> <b> Lower case : </b> {{post.title | lower}}</p>
+  <p> <b> Capital : </b> {{post.title | capfirst}}</p>
+  <p> <b> Tital Case : </b> {{post.title | title }}</p>
+  <p> <b> TruncateChar : </b> {{post.title | truncatechars:20 }}</p>
+  <p> <b> TruncateWord : </b> {{post.title | truncatewords:2 }}</p>
+  <p> <b> LineBrack : </b> {{post.title | linebreaks}}</p>
+
+  <hr />
+
+  <!-- Number filer -->
+  <!-- add -->
+  <p> <b> Original price : </b> {{post.price}}</p>
+  <p> <b> Original price(+5) : </b> {{post.price | add:5}}</p>
+  <!-- division by -->
+  {%if post.number|divisibleby:2 %}
+  <p>{{post.number}} is Even</p>
+  {%else%}
+  <p>{{post.number}} is Odd</p>
+  {%endif%}
+
+  <hr />
+  <!-- list filter -->
+  <p> <b> Original tag : </b> {{post.tag}}</p>
+  <p> <b> Original tag : </b> {{post.tag|first}}</p>
+  <p> <b> Original tag : </b> {{post.tag|last}}</p>
+  <p> <b> Original tag : </b> {{post.tag|length}}</p>
+  <p> <b> Original tag : </b> {{post.tag|slice:":2"}}</p>
+  <p> <b> Original tag : </b> {{post.tag|join:","}}</p>
+
+  <hr />
+  <p> author avalibale?:{{post.author|yesno:"yes,no,maybe"}}</p>
+  <p> comments counts? : {{post.coments_count}} Comments{{post.coments_count|pluralize}}</p>
+
+  <hr />
+  <!-- date filter -->
+  <p> created at : <b> {{post.created_at}} </b></p>
+  <p> formated date : <b> {{post.created_at|date:"D d M Y"}} </b></p>
+  <p> time only : <b> {{post.created_at|time:"H i"}} </b></p>
+
+  <hr />
+  <!-- yes no -->
+  <p> <b> Title encode : </b> {{post.title|urlencode}}</p>
+  <p> <b> float format encode: </b> {{123.456789|floatformat:3}}</p>
+
+
+</body>
+
+</html>

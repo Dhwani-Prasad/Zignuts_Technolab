@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+<h1>Welcome to Home Page</h1>
+<p>This is the home page of my Django project.</p>
+<img src="{% static 'images/home_image.jpg' %}" alt="Home Image">
+<form method="post">
+  {% csrf_token %} <!-- CSRF token for security (cross site request forgery) -->
+  <input type="text" name="name" placeholder="Enter your name">
+  <input type="password" name="password" placeholder="Enter your password">
+  <button type="submit" onclick="showAlert()">Submit</button>
+</form>
+{% endblock content %}

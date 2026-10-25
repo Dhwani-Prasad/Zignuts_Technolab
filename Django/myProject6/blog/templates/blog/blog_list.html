@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Loops</title>
+</head>
+
+<body>
+  <h1>Blog List Page Loops</h1>
+
+  <p>{{ today }}</p>
+
+  <!-- if else -->
+  {% if blogs.1.is_featured %}
+  <h2>Featured Blog: {{ blogs.1.title }}</h2>
+  {% else %}
+  <h2>No Featured Blog: {{ blogs.1.title }}</h2>
+  {% endif %}
+
+  <!-- for loop -->
+  <ul>
+    {% for blog in blogs %}
+    <li>
+      {{ forloop.counter }}. {{ blog.title }} - {{ blog.author }}
+    </li>
+    {% empty %}
+    <li>No Blogs Found</li>
+    {% endfor %}
+  </ul>
+
+  <!-- with -->
+  {% with total_blogs=blogs|length %}
+  <p>Total Blogs: {{ total_blogs }}</p>
+  {% endwith %}
+
+  <!-- cycle -->
+  <h1>Blog in table</h1>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <th>Sr No</th>
+      <th>Title</th>
+      <th>Author</th>
+    </tr>
+    {% for blog in blogs %}
+    <tr style="background-color: {% cycle 'lightgray' 'white' %};">
+      <td>{{ forloop.counter }}</td>
+      <td>{{ blog.title }}</td>
+      <td>{{ blog.author }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <!-- first of -->
+  <p> Author:{% firstof blogs.1.author "No Author"%}</p>
+
+  <!-- verbaitem -->
+  {% verbatim %}
+  <p>Author : {{blogs.1.author}} </p>
+  {% endverbatim %}
+
+  <!-- autoescape  -->
+  <h2>Autoescape</h2>
+  <p> default (safe escaping): {{html_code | safe}}</p>
+  <p> autoescape off: {% autoescape off %} {{html_code}} {% endautoescape %}</p>
+
+</body>
+
+</html>
