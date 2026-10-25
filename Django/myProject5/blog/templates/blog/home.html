@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Basic</title>
+</head>
+
+<body>
+  <h1> Template Basic </h1>
+
+  <!-- Single Variable -->
+  <p>Name: {{ name }}</p>
+  <p>Age: {{ age }}</p>
+
+  <hr />
+  <!-- List Access: -->
+  <p>Skills: {{ skills|join:", " }}</p>
+
+  <hr />
+  <!-- Object Attribute Access: -->
+  <p> Uaser Name : {{ user.username }} </p>
+  <p> User Age : {{ user.age }} </p>
+
+  <hr />
+  <!-- Dictionary Access: -->
+  <p> Blog Title : {{ blog.title }} </p>
+  <p> Blog Date Posted : {{ blog.date_posted }} </p>
+  <p> Blog Content : {{ blog.content }} </p>
+  <p> Blog Content : {{ blog.content | safe }} </p>
+  <p> Blog Author : {{ blog.author.name }} </p>
+
+  <hr />
+  <!-- Default value -->
+  <p> Empty Value : {{ empty_value|default:"No value provided" }} </p>
+  <p> Empty Value : {{ empty_value|default_if_none:"No Data" }} </p>
+
+
+
+</body>
+
+</html>
