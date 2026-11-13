@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}TaskPro - Redirecting...{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-slate-50">
+    <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-600 text-white mb-4 shadow-lg shadow-indigo-200 animate-pulse">
+            <i class="fa-solid fa-list-check text-2xl"></i>
+        </div>
+        <h2 class="text-xl font-bold text-slate-800">TaskPro</h2>
+        <p class="text-slate-500 text-sm mt-1">Loading your workspace...</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (api.isAuthenticated()) {
+            window.location.replace("/dashboard/");
+        } else {
+            window.location.replace("/login/");
+        }
+    });
+</script>
+{% endblock %}

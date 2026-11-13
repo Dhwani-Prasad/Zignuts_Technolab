@@ -1,29 +1,214 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TaskPro | Register</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-  <main class="container min-vh-100 d-flex align-items-center justify-content-center">
-    <div class="card shadow-sm border-0 p-4" style="max-width:430px;width:100%">
-      <h1 class="h3 mb-1">Create your account</h1>
-      <p class="text-secondary mb-4">Start organizing your work with TaskPro.</p>
-      <div id="message" class="alert d-none"></div>
-      <form id="registerForm">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control mb-3" id="username" required autocomplete="username">
-        <label class="form-label" for="email">Email</label>
-        <input class="form-control mb-3" id="email" type="email" autocomplete="email">
-        <label class="form-label" for="password">Password (at least 8 characters)</label>
-        <input class="form-control mb-3" id="password" type="password" required minlength="8" autocomplete="new-password">
-        <button class="btn btn-primary w-100" type="submit">Register</button>
-      </form>
-      <p class="mt-3 mb-0 text-center">Already registered? <a href="/">Login</a></p>
+{% extends 'base.html' %}
+
+{% block title %}Create Account - TaskPro{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-100 via-indigo-50 to-slate-100">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-100 p-8 my-6">
+        
+        <!-- App Logo & Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-600 text-white shadow-lg shadow-indigo-200 mb-3">
+                <i class="fa-solid fa-user-plus text-2xl"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Create your account</h1>
+            <p class="text-slate-500 text-sm mt-1">Start organizing your personal tasks today</p>
+        </div>
+
+        <!-- Alert Banner -->
+        <div id="register-alert" class="hidden mb-5 p-4 rounded-xl text-sm font-medium flex items-center gap-3">
+            <i id="register-alert-icon" class="fa-solid fa-circle-exclamation flex-shrink-0"></i>
+            <span id="register-alert-message"></span>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="register-form" class="space-y-4" onsubmit="handleRegister(event)">
+            <div>
+                <label for="username" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                    Username
+                </label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <i class="fa-regular fa-user"></i>
+                    </span>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        required 
+                        autocomplete="username"
+                        placeholder="Choose a username"
+                        class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400"
+                    >
+                </div>
+            </div>
+
+            <div>
+                <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                    Email Address
+                </label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <i class="fa-regular fa-envelope"></i>
+                    </span>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        autocomplete="email"
+                        placeholder="name@example.com"
+                        class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400"
+                    >
+                </div>
+            </div>
+
+            <div>
+                <label for="password" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                    Password
+                </label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <i class="fa-solid fa-lock"></i>
+                    </span>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        required 
+                        minlength="6"
+                        autocomplete="new-password"
+                        placeholder="Minimum 6 characters"
+                        class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400"
+                    >
+                </div>
+            </div>
+
+            <div>
+                <label for="password_confirm" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                    Confirm Password
+                </label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </span>
+                    <input 
+                        type="password" 
+                        id="password_confirm" 
+                        name="password_confirm" 
+                        required 
+                        autocomplete="new-password"
+                        placeholder="Re-enter your password"
+                        class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-slate-800 placeholder-slate-400"
+                    >
+                </div>
+            </div>
+
+            <button 
+                type="submit" 
+                id="submit-btn"
+                class="w-full mt-2 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-medium text-sm rounded-xl shadow-md shadow-indigo-200 hover:shadow-indigo-300 transition-all flex items-center justify-center gap-2"
+            >
+                <span id="btn-text">Create Account</span>
+                <i id="btn-spinner" class="hidden fa-solid fa-circle-notch fa-spin"></i>
+            </button>
+        </form>
+
+        <!-- Footer Links -->
+        <div class="mt-6 text-center text-sm text-slate-500">
+            Already have an account? 
+            <a href="/login/" class="font-semibold text-indigo-600 hover:text-indigo-700 hover:underline">
+                Sign in
+            </a>
+        </div>
     </div>
-  </main>
-  <script src="/static/js/app.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    if (api.isAuthenticated()) {
+        window.location.replace("/dashboard/");
+    }
+
+    function showAlert(message, isError = true) {
+        const alertBox = document.getElementById("register-alert");
+        const alertMessage = document.getElementById("register-alert-message");
+        const alertIcon = document.getElementById("register-alert-icon");
+
+        alertBox.className = isError 
+            ? "mb-5 p-4 rounded-xl text-sm font-medium flex items-center gap-3 bg-red-50 text-red-700 border border-red-200"
+            : "mb-5 p-4 rounded-xl text-sm font-medium flex items-center gap-3 bg-emerald-50 text-emerald-700 border border-emerald-200";
+
+        alertIcon.className = isError 
+            ? "fa-solid fa-circle-exclamation flex-shrink-0 text-red-500"
+            : "fa-solid fa-circle-check flex-shrink-0 text-emerald-500";
+
+        alertMessage.textContent = message;
+        alertBox.classList.remove("hidden");
+    }
+
+    async function handleRegister(e) {
+        e.preventDefault();
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const passwordConfirm = document.getElementById("password_confirm").value;
+
+        if (password !== passwordConfirm) {
+            showAlert("Passwords do not match.");
+            return;
+        }
+
+        if (password.length < 6) {
+            showAlert("Password must be at least 6 characters long.");
+            return;
+        }
+
+        const btnText = document.getElementById("btn-text");
+        const btnSpinner = document.getElementById("btn-spinner");
+        const submitBtn = document.getElementById("submit-btn");
+
+        submitBtn.disabled = true;
+        btnText.textContent = "Creating Account...";
+        btnSpinner.classList.remove("hidden");
+        document.getElementById("register-alert").classList.add("hidden");
+
+        try {
+            const regRes = await api.register(username, email, password, passwordConfirm);
+            if (regRes.ok) {
+                showAlert("Account created successfully! Logging you in...", false);
+                api.showToast("Account created! Logging in...", "success");
+
+                // Auto login user
+                const loginRes = await api.login(username, password);
+                if (loginRes.ok) {
+                    setTimeout(() => {
+                        window.location.replace("/dashboard/");
+                    }, 500);
+                } else {
+                    setTimeout(() => {
+                        window.location.replace("/login/");
+                    }, 800);
+                }
+            } else {
+                let msg = "Registration failed. Please check the inputs.";
+                if (regRes.data) {
+                    if (regRes.data.username) msg = `Username: ${regRes.data.username[0]}`;
+                    else if (regRes.data.email) msg = `Email: ${regRes.data.email[0]}`;
+                    else if (regRes.data.password) msg = `Password: ${regRes.data.password[0]}`;
+                    else if (regRes.data.password_confirm) msg = `${regRes.data.password_confirm[0]}`;
+                    else if (regRes.data.detail) msg = regRes.data.detail;
+                }
+                showAlert(msg, true);
+            }
+        } catch (err) {
+            showAlert("Unable to connect to server. Please try again.", true);
+        } finally {
+            submitBtn.disabled = false;
+            btnText.textContent = "Create Account";
+            btnSpinner.classList.add("hidden");
+        }
+    }
+</script>
+{% endblock %}
