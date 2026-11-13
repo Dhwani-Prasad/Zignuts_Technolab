@@ -1,5 +1,9 @@
-from rest_framework.permissions import BasePermission
+from rest_framework import permissions
 
-class IsTaskOwner(BasePermission):
+class IsTaskOwner(permissions.BasePermission):
+    """
+    Custom permission to only allow owners of a task to view, edit, or delete it.
+    """
+
     def has_object_permission(self, request, view, obj):
-        return obj.user_id == request.user.id
+        return obj.user == request.user
